@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Converter</title>
+    <link rel="icon" href="fav.png" type="image/x-icon"> <!-- Favicon added -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <style>
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .centered-image {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .centered-image img {
+            max-width: 100%;
+            height: auto;
+            max-height: 150px;
+        }
+
+        /* Added transition effects */
+        .transition-all {
+            transition: all 0.3s ease-in-out;
+        }
+
+        .input-field:hover,
+        .select-field:hover {
+            border-color: #4C9FF9;
+            box-shadow: 0 0 10px rgba(76, 159, 249, 0.5);
+        }
+
+        .button-hover:hover {
+            background-color: #4C9FF9;
+            transform: translateY(-4px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .input-field:focus,
+        .select-field:focus {
+            border-color: #4C9FF9;
+            box-shadow: 0 0 5px rgba(76, 159, 249, 0.5);
+        }
+
+        .radio-button:focus {
+            outline: none;
+            box-shadow: 0 0 5px rgba(76, 159, 249, 0.5);
+        }
+
+        .input-field,
+        .select-field {
+            transition: all 0.8s ease-in-out;
+        }
+
+        .button-hover {
+            transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        /* Lazy Load Styles */
+        .lazy-load {
+            opacity: 0;
+            transition: opacity 0.7s ease-in-out;
+        }
+
+        .lazy-load.loaded {
+            opacity: 1;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            particlesJS("particles-js", {
+                particles: {
+                    number: { value: 80, density: { enable: true, value_area: 800 } },
+                    color: { value: "#ffffff" },
+                    shape: {
+                        type: "circle",
+                        stroke: { width: 0, color: "#000000" },
+                        polygon: { nb_sides: 5 },
+                        image: { src: "img/github.svg", width: 100, height: 100 }
+                    },
+                    opacity: { value: 0.5, random: false },
+                    size: { value: 10, random: true },
+                    line_linked: { enable: true, distance: 150, color: "#ffffff", opacity: 0.4, width: 1 },
+                    move: {
+                        enable: true,
+                        speed: 6,
+                        direction: "none",
+                        random: false,
+                        straight: false,
+                        out_mode: "out",
+                        bounce: false,
+                    }
+                },
+                interactivity: {
+                    detect_on: "canvas",
+                    events: {
+                        onhover: { enable: true, mode: "repulse" },
+                        onclick: { enable: true, mode: "push" },
+                        resize: true
+                    },
+                },
+                retina_detect: true
+            });
+
+            // Lazy load header
+            const header = document.querySelector('.lazy-load');
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('loaded');
+                    }
+                });
+            });
+
+            observer.observe(header);
+        });
+
+        async function convertNumber() {
+            const number = document.getElementById('number').value;
+            const inputBase = document.getElementById('inputBase').value;
+            const outputBase = document.getElementById('outputBase').value;
+            const protocol = document.querySelector('input[name="protocol"]:checked').value;
+
+            const response = await fetch('http://192.168.1.5:3000/convert', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ number, inputBase, outputBase, protocol }),
+            });
+
+            if (!response.ok) {
+                const errorText = await response.text();
+                document.getElementById('result').innerText = `Error: ${errorText}`;
+                return;
+            }
+
+            const result = await response.json();
+            document.getElementById('result').innerText = `Converted value: ${result.converted}`;
+        }
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+</head>
+
+<body class="flex items-center justify-center h-screen bg-black relative overflow-hidden">
+    <div id="particles-js"></div>
+
+    <!-- Kongu Engineering College Header with lazy loading -->
+    <div class="absolute top-10 w-full flex justify-center z-10">
+        <h1 class="text-white p-2 text-4xl font-bold tracking-wide drop-shadow-lg lazy-load">
+            <i class="fas fa-graduation-cap mr-2"></i>
+            KONGU ENGINEERING COLLEGE
+            <i class="fas fa-university ml-2"></i>
+        </h1>
+        <!-- Help button -->
+        <button onclick="window.location.href='help.html'" 
+        class="absolute top-0 right-5 text-white bg-blue-600 px-4 py-2 rounded-lg shadow-md button-hover transition-all">
+        <i class="fas fa-question-circle"></i> Help
+        </button>
+    </div>
+
+    <!-- Main content -->
+    <div class="bg-white p-8 rounded-2xl shadow-2xl w-96 z-10 mt-32">
+        <h1 class="text-3xl font-extrabold mb-6 text-center text-gray-800">Number Converter</h1>
+
+        <div class="mb-6">
+            <input type="text" id="number" placeholder="Enter number" required
+                class="border border-gray-300 p-4 w-full mb-4 rounded-xl shadow-md focus:outline-none input-field transition-all">
+
+            <select id="inputBase" class="border border-gray-300 p-4 w-full mb-4 rounded-xl shadow-md focus:outline-none select-field transition-all">
+                <option value="BIN">Binary</option>
+                <option value="OCT">Octal</option>
+                <option value="DEC">Decimal</option>
+                <option value="HEX">Hexadecimal</option>
+            </select>
+
+            <select id="outputBase" class="border border-gray-300 p-4 w-full mb-4 rounded-xl shadow-md focus:outline-none select-field transition-all">
+                <option value="BIN">Binary</option>
+                <option value="OCT">Octal</option>
+                <option value="DEC">Decimal</option>
+                <option value="HEX">Hexadecimal</option>
+            </select>
+        </div>
+
+        <div class="flex justify-between items-center mb-6">
+            <label class="flex items-center">
+                <input type="radio" name="protocol" value="TCP" checked class="mr-2 text-blue-600 focus:ring-2 focus:ring-blue-600 radio-button transition-all">
+                TCP
+            </label>
+            <label class="flex items-center">
+                <input type="radio" name="protocol" value="UDP" class="mr-2 text-blue-600 focus:ring-2 focus:ring-blue-600 radio-button transition-all">
+                UDP
+            </label>
+        </div>
+
+        <button onclick="convertNumber()" class="bg-blue-600 text-white p-4 rounded-xl w-full shadow-lg button-hover transition-all">Convert</button>
+
+        <p id="result" class="mt-6 text-center text-gray-700 text-lg font-semibold"></p>
+    </div>
+</body>
+
+</html>

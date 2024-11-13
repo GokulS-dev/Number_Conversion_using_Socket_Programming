@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help</title>
+    <link rel="icon" href="help.png" type="image/x-icon"> <!-- Favicon added -->
+
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.3/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-8">
+
+    <!-- Help Page Header -->
+    <div class="bg-blue-600 text-white p-4 rounded-lg mb-8 shadow-md">
+        <h1 class="text-3xl font-bold">Help - Number Converter Application</h1>
+    </div>
+
+    <!-- What is TCP -->
+    <section class="mb-8">
+        <h2 class="text-2xl font-semibold text-blue-600">What is TCP (Transmission Control Protocol)?</h2>
+        <p class="text-gray-700 mt-4">
+            TCP is a connection-oriented protocol used in network communications. It ensures that data sent over the internet is received correctly by the recipient. 
+            It guarantees reliable, ordered, and error-checked delivery of a stream of data between applications running on hosts communicating over an IP network. 
+            TCP is widely used in applications like web browsing (HTTP), email (SMTP), and file transfer (FTP).
+        </p>
+    </section>
+
+    <!-- What is UDP -->
+    <section class="mb-8">
+        <h2 class="text-2xl font-semibold text-blue-600">What is UDP (User Datagram Protocol)?</h2>
+        <p class="text-gray-700 mt-4">
+            UDP is a connectionless protocol, which means it does not guarantee the delivery of packets or their order. Unlike TCP, UDP is faster but less reliable.
+            It is often used for applications where speed is more important than reliability, such as live video streaming, online gaming, and DNS queries.
+        </p>
+    </section>
+
+    <!-- Number Conversion -->
+    <section class="mb-8">
+        <h2 class="text-2xl font-semibold text-blue-600">What is Number Conversion?</h2>
+        <p class="text-gray-700 mt-4">
+            Number conversion refers to changing a number from one base to another, such as from binary to decimal, hexadecimal to octal, etc.
+            Common types of number conversions include:
+            <ul class="list-disc ml-6 mt-2">
+                <li><strong>Binary (BIN)</strong>: A number system based on 2 digits, 0 and 1.</li>
+                <li><strong>Decimal (DEC)</strong>: A number system based on 10 digits, from 0 to 9.</li>
+                <li><strong>Hexadecimal (HEX)</strong>: A base-16 number system that uses digits 0-9 and letters A-F.</li>
+                <li><strong>Octal (OCT)</strong>: A base-8 number system that uses digits 0-7.</li>
+            </ul>
+        </p>
+    </section>
+
+    <!-- How Number Conversion Works with TCP and UDP -->
+    <section class="mb-8">
+        <h2 class="text-2xl font-semibold text-blue-600">How Number Conversion Happens Using TCP and UDP?</h2>
+        <p class="text-gray-700 mt-4">
+            In your application, number conversion happens when a user enters a number in one of the supported formats (Binary, Decimal, Hexadecimal, or Octal). 
+            The user selects the input and output bases, along with the protocol (TCP or UDP) to communicate the conversion request to the server. 
+            The process is as follows:
+        </p>
+        <ul class="list-decimal ml-6 mt-2">
+            <li>The user inputs a number and selects the input and output base for conversion.</li>
+            <li>The user chooses the protocol (TCP or UDP).</li>
+            <li>The client application sends the conversion request to the server using the selected protocol.</li>
+            <li>If TCP is selected, the request is sent in a reliable, ordered manner. If UDP is selected, the request is sent without ensuring delivery.</li>
+            <li>The server processes the number conversion and returns the result to the client.</li>
+            <li>The result is displayed on the client interface, showing the converted number in the desired base.</li>
+        </ul>
+    </section>
+
+    <!-- How to Use the Application -->
+    <section>
+        <h2 class="text-2xl font-semibold text-blue-600">How to Use the Application?</h2>
+        <p class="text-gray-700 mt-4">
+            To use the Number Converter Application, follow these steps:
+        </p>
+        <ol class="list-decimal ml-6 mt-2">
+            <li>Enter the number you want to convert in the "Enter number" field.</li>
+            <li>Select the base of the number you entered (Binary, Decimal, Hexadecimal, or Octal) in the "Input Base" dropdown.</li>
+            <li>Select the base to which you want to convert the number (Binary, Decimal, Hexadecimal, or Octal) in the "Output Base" dropdown.</li>
+            <li>Choose the protocol (TCP or UDP) for communication with the server by selecting one of the radio buttons.</li>
+            <li>Click the "Convert" button to send the conversion request.</li>
+            <li>The result will be displayed showing the converted number in the selected output base.</li>
+        </ol>
+    </section>
+
+    <!-- Back Button -->
+    <div class="mt-8">
+        <a href="index.html" class="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            Back to the Main Application
+        </a>
+    </div>
+    
+
+</body>
+</html>
