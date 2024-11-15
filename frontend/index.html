@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Number Converter</title>
-    <link rel="icon" href="fav.png" type="image/x-icon"> <!-- Favicon added -->
+    <link rel="icon" href="fav.png" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <style>
@@ -30,7 +30,6 @@
             max-height: 150px;
         }
 
-        /* Added transition effects */
         .transition-all {
             transition: all 0.3s ease-in-out;
         }
@@ -67,7 +66,6 @@
             transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         }
 
-        /* Lazy Load Styles */
         .lazy-load {
             opacity: 0;
             transition: opacity 0.7s ease-in-out;
@@ -76,10 +74,10 @@
         .lazy-load.loaded {
             opacity: 1;
         }
-        .white-icon {
-  color: white;
-}
 
+        .white-icon {
+            color: white;
+        }
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
@@ -117,7 +115,6 @@
                 retina_detect: true
             });
 
-            // Lazy load header
             const header = document.querySelector('.lazy-load');
             const observer = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
@@ -137,12 +134,10 @@
             const protocol = document.querySelector('input[name="protocol"]:checked').value;
 
             const response = await fetch('http://192.168.219.230:3000/convert', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ number, inputBase, outputBase, protocol }),
-});
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ number, inputBase, outputBase, protocol }),
+            });
 
             if (!response.ok) {
                 const errorText = await response.text();
@@ -160,59 +155,49 @@
 <body class="flex items-center justify-center h-screen bg-black relative overflow-hidden">
     <div id="particles-js"></div>
 
-    <!-- Kongu Engineering College Header with lazy loading -->
     <div class="absolute top-10 w-full flex justify-center z-10">
         <h1 class="text-white p-2 text-4xl font-bold tracking-wide drop-shadow-lg lazy-load">
             <i class="fas fa-graduation-cap mr-2"></i>
             KONGU ENGINEERING COLLEGE
             <i class="fas fa-university ml-2"></i>
-                <div style="text-align: center; color: #FF6347; text-shadow: 0 0 2px #FF6347, 0 0 4px #FF6347, 0 0 7px #FF7F50, 0 0 10px #FF7F50;">
-                    <i class="fas fa-project-diagram white-icon"></i>
-                    GOKUL S 22CSR056
-                    <i class="fas fa-project-diagram white-icon"></i>
-                  </div>
-                  
-                  <div style="text-align: center; color: #a6ff47; text-shadow: 0 0 2px #a6ff47, 0 0 4px #a6ff47, 0 0 7px #a6ff47, 0 0 10px #a6ff47;">
-                    <i class="fas fa-cloud-download-alt white-icon"></i>
-                    MATHAV Ra 22CSR117
-                    <i class="fas fa-cloud-download-alt white-icon"></i>
-                  </div>
-                  
-                  <div style="text-align: center; color: #47ffe3; text-shadow: 0 0 2px #47ffe3, 0 0 4px #47ffe3, 0 0 7px #47ffe3, 0 0 10px #47ffe3;">
-                    <i class="fas fa-robot white-icon"></i>
-                    ANIRUDH SRIRAM K S 22CSL245
-                    <i class="fas fa-robot white-icon"></i>
-                  </div>
-                  <div>
-                    <i class="fas fa-satellite-dish white-icon"></i>
-                    22CST52 - COMPUTER NETWORKS
-                    <i class="fas fa-satellite-dish white-icon"></i>
-                  </div>
-                  
-            
+            <div style="text-align: center; color: #FF6347; text-shadow: 0 0 2px #FF6347, 0 0 4px #FF6347, 0 0 7px #FF7F50, 0 0 10px #FF7F50;">
+                <i class="fas fa-project-diagram white-icon"></i>
+                GOKUL S 22CSR056
+                <i class="fas fa-project-diagram white-icon"></i>
+            </div>
+            <div style="text-align: center; color: #a6ff47; text-shadow: 0 0 2px #a6ff47, 0 0 4px #a6ff47, 0 0 7px #a6ff47, 0 0 10px #a6ff47;">
+                <i class="fas fa-cloud-download-alt white-icon"></i>
+                MATHAV Ra 22CSR117
+                <i class="fas fa-cloud-download-alt white-icon"></i>
+            </div>
+            <div style="text-align: center; color: #47ffe3; text-shadow: 0 0 2px #47ffe3, 0 0 4px #47ffe3, 0 0 7px #47ffe3, 0 0 10px #47ffe3;">
+                <i class="fas fa-robot white-icon"></i>
+                ANIRUDH SRIRAM K S 22CSL245
+                <i class="fas fa-robot white-icon"></i>
+            </div><br>
+            <div>
+                <i class="fas fa-satellite-dish white-icon"></i>
+                22CST52 - COMPUTER NETWORKS
+                <i class="fas fa-satellite-dish white-icon"></i>
+            </div>
         </h1>
-        <!-- Help button -->
-        <button onclick="window.location.href='help.html'" 
-        class="absolute top-0 right-5 text-white bg-blue-600 px-4 py-2 rounded-lg shadow-md button-hover transition-all">
-        <i class="fas fa-question-circle"></i> Help
+        <button onclick="window.location.href='help.html'" class="absolute top-0 right-5 text-white bg-blue-600 px-4 py-2 rounded-lg shadow-md button-hover transition-all">
+            <i class="fas fa-question-circle"></i> Help
         </button>
     </div>
-<br><br><br><br><br>
-    <!-- Main content -->
-    <div class="bg-white p-8 rounded-2xl shadow-2xl w-96 z-10 mt-48">
+
+    <!-- Main content with adjusted margin-top -->
+    <div class="bg-white p-8 rounded-2xl shadow-2xl w-96 z-10 mt-64">
         <h1 class="text-3xl font-extrabold mb-6 text-center text-gray-800">Number Converter</h1>
 
         <div class="mb-6">
-            <input type="text" id="number" placeholder="Enter number" required
-                class="border border-gray-300 p-4 w-full mb-4 rounded-xl shadow-md focus:outline-none input-field transition-all">
-
+            <input type="text" id="number" placeholder="Enter number" required class="border border-gray-300 p-4 w-full mb-4 rounded-xl shadow-md focus:outline-none input-field transition-all">
             <select id="inputBase" class="border border-gray-300 p-4 w-full mb-4 rounded-xl shadow-md focus:outline-none select-field transition-all">
                 <option value="BIN">Binary</option>
                 <option value="OCT">Octal</option>
                 <option value="DEC">Decimal</option>
                 <option value="HEX">Hexadecimal</option>
             </select>
-
             <select id="outputBase" class="border border-gray-300 p-4 w-full mb-4 rounded-xl shadow-md focus:outline-none select-field transition-all">
                 <option value="BIN">Binary</option>
                 <option value="OCT">Octal</option>
@@ -233,9 +218,8 @@
         </div>
 
         <button onclick="convertNumber()" class="bg-blue-600 text-white p-4 rounded-xl w-full shadow-lg button-hover transition-all">Convert</button>
-        
-
         <p id="result" class="mt-6 text-center text-gray-700 text-lg font-semibold"></p>
+        <h3>Binary 11 equals decimal 3.</h3>
     </div>
 </body>
 
