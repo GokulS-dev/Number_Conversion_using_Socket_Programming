@@ -8,10 +8,10 @@ const app = express();
 app.use(cors()); // Enable CORS
 app.use(bodyParser.json());
 
-const TCP_SERVER_HOST = '216.24.57.4';
+const TCP_SERVER_HOST = '192.168.56.1';
 const TCP_SERVER_PORT = 5000;
 
-const UDP_SERVER_HOST = '216.24.57.4';
+const UDP_SERVER_HOST = '192.168.56.1';
 const UDP_SERVER_PORT = 5001;
 
 // Endpoint for conversion

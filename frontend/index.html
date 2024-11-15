@@ -132,13 +132,13 @@
             const outputBase = document.getElementById('outputBase').value;
             const protocol = document.querySelector('input[name="protocol"]:checked').value;
 
-            const response = await fetch('http://192.168.1.5:3000/convert', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ number, inputBase, outputBase, protocol }),
-            });
+            const response = await fetch('http://192.168.219.230:3000/convert', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ number, inputBase, outputBase, protocol }),
+});
 
             if (!response.ok) {
                 const errorText = await response.text();
@@ -162,6 +162,22 @@
             <i class="fas fa-graduation-cap mr-2"></i>
             KONGU ENGINEERING COLLEGE
             <i class="fas fa-university ml-2"></i>
+                <div style="text-align: center; color: #FF6347; text-shadow: 0 0 2px #FF6347, 0 0 4px #FF6347, 0 0 7px #FF7F50, 0 0 10px #FF7F50;">
+                    GOKUL S 22CSR056
+                  </div>
+                  
+                  <div style="text-align: center; color: #a6ff47; text-shadow: 0 0 2px #a6ff47, 0 0 4px #a6ff47, 0 0 7px #a6ff47, 0 0 10px #a6ff47;">
+                    MATHAV Ra 22CSR117
+                  </div>
+                  
+                  <div style="text-align: center; color: #47ffe3; text-shadow: 0 0 2px #47ffe3, 0 0 4px #47ffe3, 0 0 7px #47ffe3, 0 0 10px #47ffe3;">
+                    ANIRUDH SRIRAM K S 22CSL245
+                  </div>
+                  <div>
+                    22CST52 - COMPUTER NETWORKS
+                  </div>
+                  
+            
         </h1>
         <!-- Help button -->
         <button onclick="window.location.href='help.html'" 
@@ -169,9 +185,9 @@
         <i class="fas fa-question-circle"></i> Help
         </button>
     </div>
-
+<br><br><br><br><br>
     <!-- Main content -->
-    <div class="bg-white p-8 rounded-2xl shadow-2xl w-96 z-10 mt-32">
+    <div class="bg-white p-8 rounded-2xl shadow-2xl w-96 z-10 mt-48">
         <h1 class="text-3xl font-extrabold mb-6 text-center text-gray-800">Number Converter</h1>
 
         <div class="mb-6">
@@ -205,6 +221,7 @@
         </div>
 
         <button onclick="convertNumber()" class="bg-blue-600 text-white p-4 rounded-xl w-full shadow-lg button-hover transition-all">Convert</button>
+        
 
         <p id="result" class="mt-6 text-center text-gray-700 text-lg font-semibold"></p>
     </div>
