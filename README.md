@@ -4,7 +4,7 @@
 
 ---
 
-## ⚙ Features
+##  Features
 
 -  Java-based **TCP and UDP socket servers**
 -  Node.js server to bridge frontend and backend
