@@ -14,21 +14,7 @@
 
 ---<br>
 
-##  Project Structure
-Number_Conversion_using_Socket_Programming/
-├── backend/
-│   ├── TCPServer.java         # TCP socket server logic
-│   ├── UDPServer.java         # UDP socket server logic
-│   ├── server.js              # Node.js server
-│   ├── package.json           # Node.js config
-│   └── node_modules/
-├── frontend/
-│   ├── index.html             # Main UI
-│   ├── help.html              # Help documentation
-│   ├── KECImage.png, image.png, fav.png, etc.
-│   └── mathematics-script.svg<br>
 
----
 
 ##  Getting Started
  1. Clone the Repository
@@ -47,7 +33,7 @@ node server.js<br>4. Open the Frontend
 
 Open the file frontend/index.html in your browser to access the number conversion interface.
 
-⸻
+⸻<br>
  Author
 	•	GokuLS-dev
 
